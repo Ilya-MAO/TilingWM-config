@@ -15,4 +15,5 @@ ln -sf "$tl_path/polybar/config.ini" "$cf_path/polybar/config.ini"
 ln -sf "$tl_path/alacritty/alacritty.toml" "$cf_path/alacritty/alacritty.toml"
 
 ln -sf "$tl_path/polybar/scripts/light.sh" "$cf_path/polybar/scripts/light.sh"
+ln -sf "$tl_path/polybar/scripts/cpu_temp.sh" "$cf_path/polybar/scripts/cpu_temp.sh"
 ln -sf "$tl_path/sxhkd/scripts/language.sh" "$cf_path/sxhkd/scripts/language.sh"
