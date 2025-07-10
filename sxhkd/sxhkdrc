@@ -8,7 +8,10 @@ alt + t
 
 # program launcher
 super + @space
-	dmenu_run
+	rofi -show drun
+
+super + alt + @space
+	rofi -show run
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -21,7 +24,7 @@ super + alt + i
 	brightnessctl set +5%
 
 alt + shift + l
-	$HOME/.config/sxhkd/scripts/language.sh
+	$HOME/.config/polybar/scripts/language.sh
 
 super + shift + s
 	flameshot gui
