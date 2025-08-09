@@ -19,9 +19,10 @@ ln -sf "$tl_path/rofi/config.rasi" "$cf_path/rofi/config.rasi" && echo "rofi в�
 
 ln -sf "$tl_path/rofi/themes/squared-material-red.rasi" "$cf_path/rofi/themes/squared-material-red.rasi" && echo -e "\nТема на rofi встановлена"
 
-ln -sf "$tl_path/polybar/scripts/bluetooth_battery" "$cf_path/polybar/scripts/bluetooth_battery.sh" && echo -e "\nСкрипт bluetooth_battery.sh встановлено"
+ln -sf "$tl_path/polybar/scripts/bluetooth_battery.sh" "$cf_path/polybar/scripts/bluetooth_battery.sh" && echo -e "\nСкрипт bluetooth_battery.sh встановлено"
 ln -sf "$tl_path/polybar/scripts/cpu_temp.sh" "$cf_path/polybar/scripts/cpu_temp.sh" && echo "Скрипт cpu_temp.sh встановлено"
 ln -sf "$tl_path/polybar/scripts/language.sh" "$cf_path/polybar/scripts/language.sh" && echo "Скрипт language.sh встановлено"
 ln -sf "$tl_path/polybar/scripts/light.sh" "$cf_path/polybar/scripts/light.sh" && echo "Скрипт light.sh встановлено"
+ln -sf "$tl_path/polybar/scripts/music.sh" "$cf_path/polybar/scripts/music.sh" && echo "Скрипт music.sh встановлено"
 
 echo -e "\nКонфігурація встановлена!"

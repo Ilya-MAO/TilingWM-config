@@ -14,20 +14,36 @@ super + alt + @space
 	rofi -show run
 
 # make sxhkd reload its configuration files:
-super + Escape
-	pkill -USR1 -x sxhkd
 
-super + alt + shift + i
+super + {F9,F10,F11}
+	playerctl {previous,play-pause,next}
+
+super + F12
+	amixer set Master toggle
+
+
+super + alt + m
+	amixer set Master 2%+
+
+super + alt + shift + m
+	amixer set Master 2%-
+
+
+super + alt + shift + b
 	brightnessctl set 5%-
 
-super + alt + i
+super + alt + b
 	brightnessctl set +5%
+
 
 alt + shift + l
 	$HOME/.config/polybar/scripts/language.sh
 
+
 super + shift + s
 	flameshot gui
+
+
 
 #
 # bspwm hotkeys
@@ -36,6 +52,10 @@ super + shift + s
 # quit/restart bspwm
 ctrl + alt + q
 	bspc {quit,wm -r}
+
+# restart polybar
+ctrl + alt + p
+	polybar-msg cmd restart
 
 # close and kill
 alt + w

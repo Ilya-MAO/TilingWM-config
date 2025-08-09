@@ -4,9 +4,6 @@
 ![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnubash&logoColor=white)
 ![NeoVim](https://img.shields.io/badge/NeoVim-ff7718?style=for-the-badge&logo=neovim&logoColor=white)
 <br>
-![Size](https://img.shields.io/badge/Size:%202.2M-FDE003)
-![Dependencies](https://img.shields.io/badge/Dependencies:%209-84E4F5)
-
 ![main-screenshot](./screenshots/scr1.png)
 
 ## Компоненти
@@ -24,37 +21,48 @@
 2. **xorg-xinit** -> дозволяє власноруч запустити сесію
 3. **xorg-xrandr** -> інструмент для керування роздільною здатністю дисплеїв
 
+### Додаткові пакети:
+1. **brightnessctl** -> керує яскравістю екрана
+2. **playerctl** -> керує музикою
+3. **xkb-switch** -> керує розкладкою клавіатури
+
 ## Встановлення конфігурації
 
 **1. Встановлюємо пакети**
 ```sh
 sudo pacman -S bspwm sxhkd polybar picom alacritty rofi \
-                xorg-server xorg-xinit xorg-xrandr
+                xorg-server xorg-xinit xorg-xrandr \
+                brightnessctl playerctl
 ```
 
-**2. Встановлення шрифту (який підтримує іконки)**
+**2. Додаткові пакети із yay**
+```sh
+yay -S xkb-switch
+```
+
+**3. Встановлення шрифту (який підтримує іконки)**
 ```sh
 sudo pacman -S ttf-cascadia-mono-nerd
 ```
 
-**3. Клонуємо репозиторій**
+**4. Клонуємо репозиторій**
 ```sh
-git clone https://github.com/Ilya-MAO/TilingWM-config.git $PATH/.tiling-config/
-cd $PATH/.tiling-config/
+git clone https://github.com/Ilya-MAO/TilingWM-config.git $HOME/.tiling-config/
+cd $HOME/.tiling-config/
 ```
 
-**4. Прописуємо команду для створення посилань у `~/.config`**
+**5. Прописуємо команду для створення посилань у `~/.config`**
 ```sh
 ./setup.sh
 ```
 
-**5. Створюємо файл `~/.xinitrc` та прописуємо там дві команди:**
+**6. Створюємо файл `~/.xinitrc` та прописуємо там дві команди:**
 ```sh
 sxhkd &
 exec bspwm
 ```
 
-**6. Запускаємо сесію у тайлінгу**
+**7. Запускаємо сесію у тайлінгу**
 ```sh
 startx
 ```

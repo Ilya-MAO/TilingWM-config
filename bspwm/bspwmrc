@@ -14,8 +14,10 @@ bspc config gapless_monocle      true
 
 bspc rule -a Yad state=floating
 
+xset r rate 200 30
+
 picom &
 polybar example &
 
-wallpaper="$HOME/sync/pictures_s/wallpapers/fon1.jpg"
+wallpaper="$HOME/sync/pictures/wallpapers/fon1.jpg"
 feh --no-fehbg --bg-scale "$wallpaper"
