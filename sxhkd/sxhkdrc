@@ -43,7 +43,22 @@ alt + shift + l
 super + shift + s
 	flameshot gui
 
+#
+# rofi scripts
+#
+#
 
+super + F2
+	$HOME/.config/rofi/scripts/power_menu.sh
+
+super + F3
+	$HOME/.config/rofi/scripts/bluetooth_menu.sh
+
+super + F4
+	$HOME/.config/rofi/scripts/color_theme.sh
+
+super + F5
+	$HOME/.config/rofi/scripts/timer.sh
 
 #
 # bspwm hotkeys

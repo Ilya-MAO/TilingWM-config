@@ -5,8 +5,10 @@ mkdir -p "$cf_path/bspwm/"
 mkdir -p "$cf_path/sxhkd/"
 mkdir -p "$cf_path/picom/"
 mkdir -p "$cf_path/alacritty/"
-mkdir -p "$cf_path/polybar/scripts/"
+mkdir -p "$cf_path/polybar/scripts/timer/"
 mkdir -p "$cf_path/rofi/themes/"
+mkdir -p "$cf_path/rofi/scripts/"
+mkdir -p "$cf_path/dunst/"
 
 echo -e "Директорії створено!"
 
@@ -16,13 +18,21 @@ ln -sf "$tl_path/picom/picom.conf" "$cf_path/picom/picom.conf" && echo "picom в
 ln -sf "$tl_path/alacritty/alacritty.toml" "$cf_path/alacritty/alacritty.toml" && echo "alacritty встановлено"
 ln -sf "$tl_path/polybar/config.ini" "$cf_path/polybar/config.ini" && echo "polybar встановлено"
 ln -sf "$tl_path/rofi/config.rasi" "$cf_path/rofi/config.rasi" && echo "rofi встановлено"
+ln -sf "$tl_path/dunst/dunstrc" "$cf_path/dunst/dunstrc" && echo "dunst встановлено"
 
 ln -sf "$tl_path/rofi/themes/squared-material-red.rasi" "$cf_path/rofi/themes/squared-material-red.rasi" && echo -e "\nТема на rofi встановлена"
+ln -sf "$tl_path/rofi/scripts/laptop_battery_rofi.sh" "$cf_path/rofi/scripts/laptop_battery_rofi.sh" && echo -e "\nСкрипт laptop_battery_rofi.sh встановлено"
+ln -sf "$tl_path/rofi/scripts/power_menu.sh" "$cf_path/rofi/scripts/power_menu.sh" && echo -e "\nСкрипт power_menu.sh встановлено"
+ln -sf "$tl_path/rofi/scripts/bluetooth_menu.sh" "$cf_path/rofi/scripts/bluetooth_menu.sh" && echo -e "\nСкрипт bluetooth_menu.sh встановлено"
+ln -sf "$tl_path/rofi/scripts/color_theme.sh" "$cf_path/rofi/scripts/color_theme.sh" && echo -e "\nСкрипт color_theme.sh встановлено"
+ln -sf "$tl_path/rofi/scripts/timer.sh" "$cf_path/rofi/scripts/timer.sh" && echo -e "\nСкрипт timer.sh встановлено"
 
 ln -sf "$tl_path/polybar/scripts/bluetooth_battery.sh" "$cf_path/polybar/scripts/bluetooth_battery.sh" && echo -e "\nСкрипт bluetooth_battery.sh встановлено"
 ln -sf "$tl_path/polybar/scripts/cpu_temp.sh" "$cf_path/polybar/scripts/cpu_temp.sh" && echo "Скрипт cpu_temp.sh встановлено"
 ln -sf "$tl_path/polybar/scripts/language.sh" "$cf_path/polybar/scripts/language.sh" && echo "Скрипт language.sh встановлено"
 ln -sf "$tl_path/polybar/scripts/light.sh" "$cf_path/polybar/scripts/light.sh" && echo "Скрипт light.sh встановлено"
 ln -sf "$tl_path/polybar/scripts/music.sh" "$cf_path/polybar/scripts/music.sh" && echo "Скрипт music.sh встановлено"
+ln -sf "$tl_path/polybar/scripts/laptop_battery.sh" "$cf_path/polybar/scripts/laptop_battery.sh" && echo "Скрипт laptop_battery.sh встановлено"
+ln -sf "$tl_path/polybar/scripts/timer/main.sh" "$cf_path/polybar/scripts/timer/main.sh" && echo "Скрипт timer/main.sh встановлено"
 
 echo -e "\nКонфігурація встановлена!"

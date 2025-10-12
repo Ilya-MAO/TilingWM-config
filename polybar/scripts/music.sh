@@ -12,8 +12,8 @@ else
 	if [ "$mus_mute" = "off" ]; then
 		echo "%{F#b8bebf}  $mus_volume%{F-}"
 	elif [ "$mus_status" = "Paused" ]; then
-		echo "%{F#FDE003} $mus_volume%{F-}"
+		echo "%{F#FDE003} $mus_volume%{F-}"
 	elif [ "$mus_status" = "Playing" ]; then
-		echo "%{F#B2D977} $mus_volume%{F-}"
+		echo "%{F#B2D977} $mus_volume%{F-}"
 	fi
 fi

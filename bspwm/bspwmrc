@@ -18,6 +18,15 @@ xset r rate 200 30
 
 picom &
 polybar example &
+dunst &
 
-wallpaper="$HOME/sync/pictures/wallpapers/fon1.jpg"
+wallpaper="$HOME/.tiling-config/wallpapers/wp1.jpg"
 feh --no-fehbg --bg-scale "$wallpaper"
+
+# wallpaper="$HOME/.tiling-config/wallpapers/live_wp1.mp4"
+#
+# if ! pidof mpv > /dev/null; then
+# 	xwinwrap -ov -g 1920x1080+0+0 -- \
+# 		mpv --no-audio --loop --panscan=1 --no-osc --no-input-default-bindings \
+# 			--hwdec=auto-safe --vo=gpu --profile=low-latency --wid=%WID "$wallpaper"
+# fi
