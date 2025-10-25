@@ -1,25 +1,37 @@
 path_tmp="$HOME/.config/polybar/scripts/timer/tmp"
 path_exp="$HOME/.config/polybar/scripts/timer/exp"
 
+time_to_num() {
+	echo "$(( 10#$(date +%d) * 86400 + 10#$(date +%H) * 3600 + 10#$(date +%M) * 60 + 10#$(date +%S) ))"
+}
+
 case "$1" in
-	"--start")
-		echo "$(( 10#$(date +%d) * 86400 + 10#$(date +%H) * 3600 + 10#$(date +%M) * 60 + 10#$(date +%S) ))" > "$path_tmp" ;;
 	"--stop")
 		rm -f "$path_tmp" "$path_exp"
 		exit 0 ;;
 	"-n")
+		rm -f "$path_tmp" "$path_exp"
 		case "$2" in
-			"s") echo "$(( $3 ))" > "$path_exp" ;;
-			"m") echo "$(( $3 * 60 + ${4:-0} ))" > "$path_exp" ;;
-			"h") echo "$(( $3 * 3600 + ${4:-0} * 60 + ${5:-0} ))" > "$path_exp" ;;
-			"d") echo "$(( $3 * 86400 + ${4:-0} * 3600 + ${5:-0} * 60 + ${6:-0} ))" > "$path_exp" ;;
+			# Час буде зменшуватись
+			"s"|"<s") echo "$(( $3 ))" > "$path_exp" ;;
+			"m"|"<m") echo "$(( $3 * 60 + ${4:-0} ))" > "$path_exp" ;;
+			"h"|"<h") echo "$(( $3 * 3600 + ${4:-0} * 60 + ${5:-0} ))" > "$path_exp" ;;
+			"d"|"<d") echo "$(( $3 * 86400 + ${4:-0} * 3600 + ${5:-0} * 60 + ${6:-0} ))" > "$path_exp" ;;
+
+			# Час буде збільшуватись
+			"s>") echo "$(( "$(time_to_num)" - $3 ))" > "$path_tmp" ;;
+			"m>") echo "$(( "$(time_to_num)" - $3 * 60 - ${4:-0} ))" > "$path_tmp" ;;
+			"h>") echo "$(( "$(time_to_num)" - $3 * 3600 - ${4:-0} * 60 - ${5:-0} ))" > "$path_tmp" ;;
+			"d>") echo "$(( "$(time_to_num)" - $3 * 86400 - ${4:-0} * 3600 - ${5:-0} * 60 - ${6:-0} ))" > "$path_tmp" ;;
 		esac
-		echo "$(( 10#$(date +%d) * 86400 + 10#$(date +%H) * 3600 + 10#$(date +%M) * 60 + 10#$(date +%S) ))" > "$path_tmp" ;;
+		if [[ ! -s "$path_tmp" ]]; then
+			echo "$(time_to_num)" > "$path_tmp"
+		fi ;;
 esac
 
 # Якщо час збільшується (відсутній 'ext')
 if [[ -s "$path_tmp" ]]; then
-	format=$(( 10#$(date +%d) * 86400 + 10#$(date +%H) * 3600 + 10#$(date +%M) * 60 + 10#$(date +%S) - $(cat "$path_tmp") ))
+	format=$(( "$(time_to_num)" - $(<"$path_tmp") ))
 else
 	echo ""
 	exit 0
@@ -27,7 +39,7 @@ fi
 
 # Якщо час зменшується (присутній 'ext')
 if [[ -s "$path_exp" ]]; then
-	format=$(( $(cat "$path_exp") - $format ))
+	format=$(( $(<"$path_exp") - $format ))
 fi
 
 # При зупинці таймера
@@ -46,7 +58,7 @@ day=$(( $format / 86400 ))
 # Створення остаточного результату
 resform=""
 (( $day > 0 )) && resform+=$(printf "%dd " "$day")
-(( $hour > 0 )) && resform+=$(printf "%02d:" "$hour")
+(( $hour > 0 || $day > 0 )) && resform+=$(printf "%02d:" "$hour")
 resform+=$(printf "%02d:%02d" "$min" "$sec")
 
 # Вивід інформації
