@@ -1,14 +1,38 @@
-path_tmp="$HOME/.config/polybar/scripts/timer/tmp"
-path_exp="$HOME/.config/polybar/scripts/timer/exp"
+path_tmp="$HOME/.config/polybar/scripts/timer/tmp" # час на момент старту таймера
+path_exp="$HOME/.config/polybar/scripts/timer/exp" # час від якого буде йти відлік
+path_stop="$HOME/.config/polybar/scripts/timer/stop" # різниця часу на момент зупинки
 
+# Поточний час у вигляді числа
 time_to_num() {
 	echo "$(( 10#$(date +%d) * 86400 + 10#$(date +%H) * 3600 + 10#$(date +%M) * 60 + 10#$(date +%S) ))"
 }
 
+# Головне меню таймера
 case "$1" in
-	"--stop")
-		rm -f "$path_tmp" "$path_exp"
+	"--get-modes")
+		modes=""
+		[[ -s "$path_tmp" ]] && [[ -s "$path_stop" ]] && modes+="Continue\n"
+		[[ -s "$path_tmp" ]] && [[ ! -s "$path_stop" ]] && modes+="Stop\n"
+		[[ -s "$path_tmp" ]] && modes+="Finish\n"
+		modes+="Help\nExit"
+		echo "$modes"
 		exit 0 ;;
+
+	"--continue")
+		if [[ -s "$path_stop" ]]; then
+			echo $(( "$(time_to_num)" - $(<"$path_stop") )) > "$path_tmp"
+			rm -f "$path_stop"
+		fi ;;
+
+	"--stop")
+		if [[ -s "$path_tmp" ]]; then
+			echo $(( "$(time_to_num)" - $(<"$path_tmp") )) > "$path_stop"
+		fi ;;
+
+	"--finish")
+		rm -f "$path_tmp" "$path_exp" "$path_stop"
+		exit 0 ;;
+
 	"-n")
 		rm -f "$path_tmp" "$path_exp"
 		case "$2" in
@@ -24,10 +48,14 @@ case "$1" in
 			"h>") echo "$(( "$(time_to_num)" - $3 * 3600 - ${4:-0} * 60 - ${5:-0} ))" > "$path_tmp" ;;
 			"d>") echo "$(( "$(time_to_num)" - $3 * 86400 - ${4:-0} * 3600 - ${5:-0} * 60 - ${6:-0} ))" > "$path_tmp" ;;
 		esac
+
 		if [[ ! -s "$path_tmp" ]]; then
 			echo "$(time_to_num)" > "$path_tmp"
 		fi ;;
 esac
+
+# Якщо таймер зупинений
+[[ -s "$path_stop" ]] && exit 0
 
 # Якщо час збільшується (відсутній 'ext')
 if [[ -s "$path_tmp" ]]; then
