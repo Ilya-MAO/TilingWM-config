@@ -22,6 +22,7 @@
 1. **xorg-server** -> основний елемент X-сервера.
 2. **xorg-xinit** -> дозволяє власноруч запустити сесію.
 3. **xorg-xrandr** -> інструмент для керування роздільною здатністю дисплеїв.
+3. **xorg-xset** -> для встановлення затримки між друком
 
 ### Додаткові пакети:
 1. **brightnessctl** -> керує яскравістю екрана.
@@ -36,7 +37,7 @@
 **1. Встановлюємо пакети**
 ```sh
 sudo pacman -S bspwm sxhkd polybar picom alacritty rofi \
-                xorg-server xorg-xinit xorg-xrandr \
+                xorg-server xorg-xinit xorg-xrandr xorg-xset \
                 brightnessctl playerctl dunst libnotify \
                 mpv
 ```

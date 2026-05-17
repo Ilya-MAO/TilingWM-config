@@ -39,6 +39,8 @@ super + alt + b
 alt + shift + l
 	$HOME/.config/polybar/scripts/language.sh
 
+super + shift + w
+	$HOME/.config/polybar/scripts/warp.sh -t
 
 super + shift + s
 	flameshot gui
@@ -88,6 +90,10 @@ super + g
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
 #
 # focus/swap
 #
@@ -109,8 +115,8 @@ super + {_,shift + }{1-4}
 	bspc {desktop -f,node -d} '^{1-4}'
 
 # focux alt desktop
-super + alt + {1,2,3,4}
-	bspc desktop -f '^{5,6,7,8}'
+super + alt + {_,shift + }{1,2,3,4}
+	bspc {desktop -f,node -d} '^{5,6,7,8}'
 
 #
 # preselect

@@ -33,6 +33,7 @@ ln -sf "$tl_path/polybar/scripts/language.sh" "$cf_path/polybar/scripts/language
 ln -sf "$tl_path/polybar/scripts/light.sh" "$cf_path/polybar/scripts/light.sh" && echo "Скрипт light.sh встановлено"
 ln -sf "$tl_path/polybar/scripts/music.sh" "$cf_path/polybar/scripts/music.sh" && echo "Скрипт music.sh встановлено"
 ln -sf "$tl_path/polybar/scripts/laptop_battery.sh" "$cf_path/polybar/scripts/laptop_battery.sh" && echo "Скрипт laptop_battery.sh встановлено"
+ln -sf "$tl_path/polybar/scripts/warp.sh" "$cf_path/polybar/scripts/warp.sh" && echo "Скрипт warp.sh встановлено"
 ln -sf "$tl_path/polybar/scripts/timer/main.sh" "$cf_path/polybar/scripts/timer/main.sh" && echo "Скрипт timer/main.sh встановлено"
 
 echo -e "\nКонфігурація встановлена!"
